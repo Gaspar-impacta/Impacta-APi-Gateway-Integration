@@ -1,0 +1,167 @@
+{
+  "info": {
+    "name": "api-books",
+    "description": "Coleção para testar a API Books com autenticação Kong key-auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "apikey",
+      "value": "12345",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Cadastrar Autor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{apikey}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numero\": 1,\n  \"nome\": \"Machado de Assis\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/autor",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "autor"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cadastrar Livro para Autor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{apikey}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"numero\": 1,\n  \"titulo\": \"Dom Casmurro\",\n  \"edicao\": 1,\n  \"isbn\": \"123456789\",\n  \"categoria\": \"Romance\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/autor/1/livro",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "autor",
+            "1",
+            "livro"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar Autor por número",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{apikey}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/autor/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "autor",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar todos os Autores",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{apikey}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/autor/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "autor"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar Livros do Autor",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "apikey",
+            "value": "{{apikey}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/autor/1/livro/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "autor",
+            "1",
+            "livro"
+          ]
+        }
+      }
+    }
+  ]
+}
